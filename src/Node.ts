@@ -3,12 +3,10 @@
 export default class Node {
     private data: any;
     private children: Node[];
-    private visited: Node[];
 
     constructor(data: any, children: Node[]){
         this.data = data;
         this.children = children;
-        this.visited = [];
     }
     public setData(data: any){
         this.data = data;
@@ -21,7 +19,7 @@ export default class Node {
     };
     public getChildren(): Node[]{
         return this.children;
-    }
+    };
     public bfs(data: any):any {
         function fnNode(n: Node, todo:Node[], visited:Node[], acc:number):any{
             if(visited.includes(n)){
@@ -34,7 +32,7 @@ export default class Node {
             todo = todo.concat(n.getChildren())
             acc += 1;
             return fnLON(todo, visited, acc);
-        }
+        };
         function fnLON(todo: Node[], visited: Node[], acc: number):any{
             if (!todo.length){
                 return visited;
@@ -57,7 +55,7 @@ export default class Node {
             todo = n.getChildren().concat(todo);
             acc += 1;
             return fnLON(todo, visited, acc);
-        }
+        };
         function fnLON(todo: Node[], visited: Node[], acc: number):any{
             if (!todo.length){
                 return visited;
