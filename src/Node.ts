@@ -21,7 +21,7 @@ export default class Node {
         return this.children;
     };
     public bfs(data: any):any {
-        function fnNode(n: Node, todo:Node[], visited:Node[], acc:number):any{
+        function fnNode(n: Node, todo: Node[], visited: Node[], acc: number): any {
             if(visited.includes(n)){
                 return fnLON(todo, visited, acc);
             }
@@ -33,7 +33,7 @@ export default class Node {
             acc += 1;
             return fnLON(todo, visited, acc);
         };
-        function fnLON(todo: Node[], visited: Node[], acc: number):any{
+        function fnLON(todo: Node[], visited: Node[], acc: number): any {
             if (!todo.length){
                 return visited;
             }
@@ -44,7 +44,7 @@ export default class Node {
         return fnNode(this, [], [], 0);
     }
     public dfs(data: any):any{
-        function fnNode(n: Node, todo: Node[], visited: Node[], acc:number):any{
+        function fnNode(n: Node, todo: Node[], visited: Node[], acc: number): any {
             if(visited.includes(n)){
                 return fnLON(todo, visited, acc);
             }
@@ -56,7 +56,7 @@ export default class Node {
             acc += 1;
             return fnLON(todo, visited, acc);
         };
-        function fnLON(todo: Node[], visited: Node[], acc: number):any{
+        function fnLON(todo: Node[], visited: Node[], acc: number): any {
             if (!todo.length){
                 return visited;
             }
@@ -65,5 +65,18 @@ export default class Node {
             }
         }
         return fnNode(this, [], [], 0);
+    }
+    public fractal(x: number, memo: any = {}) {
+        if (x <= 1){
+            return 1;
+        } else {
+            if (memo[x]) {
+                return memo[x];
+            } else {
+                let result: number = x * this.fractal(x-1);
+                memo[x] = result;
+                return result;
+            }
+        }
     }
 }
